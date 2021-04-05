@@ -3,6 +3,7 @@ initial_state=["W", 0, 0, "D", 100]
 # [W/S, arrow_count, material_count, Dormant/Rest, health]
 help_me_STEP_bro = -5
 gamma = 0.999
+min_delta=1e-3
 
 position_in_square=["C", "W", "E", "N", "S"]
 all_states_array={}
@@ -232,42 +233,35 @@ def center(curr_state, all_states_array):
         best_action="Blade"
     return (ans, best_action)
 
-for x in range(1,10):
+delta=100
+number_of_iter=0
+x=1
+while(delta>=min_delta):
     print(x)
+    number_of_iter+=1
     results_arr[x]={}
     policy_arr[x]={}
+    delta=-1
     for a in range(4):
         for b in range(3):
-            # for z in range(0, 125, 25):
             for c in position_in_square:
                 for d in mm_states:
-                    # if z<=0:
                     results_arr[x-1][(c, a, b, d, 0)]=50
     for s in results_arr[x-1]:
-        # print(s)
-
-
-
-        #############################################################3
-
-                            # future_states_array[(a, x, y, b, z)]=50
-                        
-                            # future_states_array[(a, x, y, b, z)]=0
-
-        ##############################################################
-        
         if s[4]<=0:
             continue
         if s[0]=="N":
             res1=north(s, results_arr[x-1])
             results_arr[x][s]=res1[0]
             policy_arr[x][s]=res1[1]
+            delta=max(abs(results_arr[x-1][s]-results_arr[x][s]), delta)
             if s==('C', 0, 0, 'R', 25):
                 print("BRUUUU1")
         if s[0]=="E":
             res2=east(s, results_arr[x-1])
             policy_arr[x][s]=res2[1]
             results_arr[x][s]=res2[0]
+            delta=max(abs(results_arr[x-1][s]-results_arr[x][s]), delta)
             if s==('C', 0, 0, 'R', 25):
                 print("BRUUUU2")
 
@@ -277,11 +271,13 @@ for x in range(1,10):
             results_arr[x][s]=res3[0]
             if s==('C', 0, 0, 'R', 25):
                 print("BRUUUU3")
+            delta=max(abs(results_arr[x-1][s]-results_arr[x][s]), delta)
 
         if s[0]=="S":
             res4=south(s, results_arr[x-1])
             policy_arr[x][s]=res4[1]
             results_arr[x][s]=res4[0]
+            delta=max(abs(results_arr[x-1][s]-results_arr[x][s]), delta)
             if s==('C', 0, 0, 'R',25):
                 print("BRUUUU4")
 
@@ -289,12 +285,14 @@ for x in range(1,10):
             res5=center(s, results_arr[x-1])
             policy_arr[x][s]=res5[1]
             results_arr[x][s]=res5[0]
+            delta=max(abs(results_arr[x-1][s]-results_arr[x][s]), delta)
             if s==('C', 0, 0, 'R', 25):
                 print("BRUUUU5")
 
         # print(res)
-
-for i in range(1,10):
+    x+=1
+    
+for i in range(1,number_of_iter+1):
     fi="./trace_"+str(i)
     with open(fi, "w") as fil:
         fil.write(str(policy_arr[i]))
