@@ -263,36 +263,38 @@ for x in range(1,10):
             results_arr[x][s]=res1[0]
             policy_arr[x][s]=res1[1]
             if s==('C', 0, 0, 'R', 25):
-                # print("BRUUUU1")
+                print("BRUUUU1")
         if s[0]=="E":
             res2=east(s, results_arr[x-1])
             policy_arr[x][s]=res2[1]
             results_arr[x][s]=res2[0]
             if s==('C', 0, 0, 'R', 25):
-                # print("BRUUUU2")
+                print("BRUUUU2")
 
         if s[0]=="W":
             res3=west(s, results_arr[x-1])
             policy_arr[x][s]=res3[1]
             results_arr[x][s]=res3[0]
             if s==('C', 0, 0, 'R', 25):
-                # print("BRUUUU3")
+                print("BRUUUU3")
 
         if s[0]=="S":
             res4=south(s, results_arr[x-1])
             policy_arr[x][s]=res4[1]
             results_arr[x][s]=res4[0]
             if s==('C', 0, 0, 'R',25):
-                # print("BRUUUU4")
+                print("BRUUUU4")
 
         if s[0]=="C":
             res5=center(s, results_arr[x-1])
             policy_arr[x][s]=res5[1]
             results_arr[x][s]=res5[0]
             if s==('C', 0, 0, 'R', 25):
-                # print("BRUUUU5")
+                print("BRUUUU5")
 
         # print(res)
 
 for i in range(1,10):
-    pprint(policy_arr[i])
+    fi="./trace_"+str(i)
+    with open(fi, "w") as fil:
+        fil.write(str(policy_arr[i]))
