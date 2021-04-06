@@ -35,75 +35,67 @@ def north(curr_state ,all_states_array):
     stay = -99999
 
     if curr_state[3]=="D":
-        down = help_me_STEP_bro + gamma*(0.85 * (0.2 * all_states_array[("C",curr_state[1],curr_state[2],"R",curr_state[4])] + 0.8*all_states_array[("C",curr_state[1],curr_state[2],"D",curr_state[4])] )+ 0.15 * (0.2 * all_states_array[("E",curr_state[1],curr_state[2],"R",curr_state[4])] + 0.8 * all_states_array[("E",curr_state[1],curr_state[2],"D",curr_state[4])]))
+        down = help_me_STEP_bro + gamma*(0.85 * (0.2 * all_states_array[("C",curr_state[1],curr_state[2],"R",curr_state[4])] + 0.8*all_states_array[("C",curr_state[1],curr_state[2],"D",curr_state[4])]) + 0.15 * (0.2 * all_states_array[("E",curr_state[1],curr_state[2],"R",curr_state[4])] + 0.8 * all_states_array[("E",curr_state[1],curr_state[2],"D",curr_state[4])]))
+        stay = help_me_STEP_bro + gamma*(0.85 * (0.2 * all_states_array[("N",curr_state[1],curr_state[2],"R",curr_state[4])] + 0.8*all_states_array[("N",curr_state[1],curr_state[2],"D",curr_state[4])]) + 0.15 * (0.2 * all_states_array[("E",curr_state[1],curr_state[2],"R",curr_state[4])] + 0.8 * all_states_array[("E",curr_state[1],curr_state[2],"D",curr_state[4])]))
     
         if curr_state[2]>0:
-            craft = help_me_STEP_bro + gamma*(0.5 * (0.2*all_states_array[("N",min(curr_state[1]+1,3),curr_state[2]-1,"R",curr_state[4])] + 0.8*all_states_array[("N",min(curr_state[1]+1,3),curr_state[2]-1,"D",curr_state[4])]) + 0.35 * (0.2*all_states_array[("N",min(curr_state[1]+2,3),curr_state[2]-1,"R",curr_state[4])] + 0.8*all_states_array[("N",min(curr_state[1]+2,3),curr_state[2]-1,"D",curr_state[4])]) + 0.15 * (0.2*all_states_array[("N",min(curr_state[1]+3,3),curr_state[2]-1,"R",curr_state[4])] + 0.8*all_states_array[("N",min(curr_state[1]+3,3),curr_state[2]-1,"D",curr_state[4])]))
-            
-        stay = help_me_STEP_bro + gamma*(0.85 * (0.2*all_states_array[("N",curr_state[1],curr_state[2],"R",curr_state[4])] + 0.8*all_states_array[("N",curr_state[1],curr_state[2],"D",curr_state[4])]) + 0.15 * (0.2*all_states_array[("E",curr_state[1],curr_state[2],"R",curr_state[4])] + 0.8*all_states_array[("E",curr_state[1],curr_state[2],"D",curr_state[4])]))
+            craft = help_me_STEP_bro + gamma*(0.5 * (0.2*all_states_array[("N",min(curr_state[1]+1,3),curr_state[2]-1,"R",curr_state[4])] + 0.8*all_states_array[("N",min(curr_state[1]+1,3),curr_state[2]-1,"D",curr_state[4])]) + 0.35 * (0.2*all_states_array[("N",min(curr_state[1]+2,3),curr_state[2]-1,"R",curr_state[4])] + 0.8*all_states_array[("N",min(curr_state[1]+2,3),curr_state[2]-1,"D",curr_state[4])]) + 0.15 * (0.2*all_states_array[("N",min(curr_state[1]+3,3),curr_state[2]-1,"R",curr_state[4])] + 0.8*all_states_array[("N",min(curr_state[1]+3,3),curr_state[2]-1,"D",curr_state[4])])) 
 
     elif curr_state[3]=="R":
-        down = help_me_STEP_bro + gamma*(0.85 * (0.5*all_states_array[("C",curr_state[1],curr_state[2],"R",curr_state[4])] + 0.5 * all_states_array[("C",curr_state[1],curr_state[2],"D",curr_state[4])])+ 0.15 * (0.5 * all_states_array[("E",curr_state[1],curr_state[2],"R",curr_state[4])] + 0.5 * all_states_array[("E",curr_state[1],curr_state[2],"D",curr_state[4])]))
+        down = help_me_STEP_bro + gamma*(0.85 * (0.5 * all_states_array[("C",curr_state[1],curr_state[2],"R",curr_state[4])] + 0.5*all_states_array[("C",curr_state[1],curr_state[2],"D",curr_state[4])]) + 0.15 * (0.5 * all_states_array[("E",curr_state[1],curr_state[2],"R",curr_state[4])] + 0.5 * all_states_array[("E",curr_state[1],curr_state[2],"D",curr_state[4])]))
+        stay = help_me_STEP_bro + gamma*(0.85 * (0.5 * all_states_array[("N",curr_state[1],curr_state[2],"R",curr_state[4])] + 0.5*all_states_array[("N",curr_state[1],curr_state[2],"D",curr_state[4])]) + 0.15 * (0.5 * all_states_array[("E",curr_state[1],curr_state[2],"R",curr_state[4])] + 0.5 * all_states_array[("E",curr_state[1],curr_state[2],"D",curr_state[4])]))
     
         if curr_state[2]>0:
             craft = help_me_STEP_bro + gamma*(0.5 * (0.5*all_states_array[("N",min(curr_state[1]+1,3),curr_state[2]-1,"R",curr_state[4])] + 0.5*all_states_array[("N",min(curr_state[1]+1,3),curr_state[2]-1,"D",curr_state[4])]) + 0.35 * (0.5*all_states_array[("N",min(curr_state[1]+2,3),curr_state[2]-1,"R",curr_state[4])] + 0.5*all_states_array[("N",min(curr_state[1]+2,3),curr_state[2]-1,"D",curr_state[4])]) + 0.15 * (0.5*all_states_array[("N",min(curr_state[1]+3,3),curr_state[2]-1,"R",curr_state[4])] + 0.5*all_states_array[("N",min(curr_state[1]+3,3),curr_state[2]-1,"D",curr_state[4])]))
             
-        stay = help_me_STEP_bro + gamma*(0.85 * (0.5*all_states_array[("N",curr_state[1],curr_state[2],"R",curr_state[4])] + 0.5*all_states_array[("N",curr_state[1],curr_state[2],"D",curr_state[4])]) + 0.15 * (0.5*all_states_array[("E",curr_state[1],curr_state[2],"R",curr_state[4])] + 0.5*all_states_array[("E",curr_state[1],curr_state[2],"D",curr_state[4])]))
-
-    # print(down,craft,stay,curr_state)
     ans=max(down,craft,stay)
+
     best_action=""
+    
     if ans==down:
         best_action="DOWN"
     elif ans==craft:
         best_action="CRAFT"
     elif ans==stay:
         best_action="STAY"
+    
     return (ans, best_action)
-
 
 def east(curr_state, all_states_array):
 
     left = -99999
-    # craft = -99999
     stay = -99999
     blade = -99999
     arrow = -99999
 
     if curr_state[3]=="D":
         left = help_me_STEP_bro + gamma*(0.2 * all_states_array[("C",curr_state[1],curr_state[2],"R",curr_state[4])] + 0.8*all_states_array[("C",curr_state[1],curr_state[2],"D",curr_state[4])])
-
         stay = help_me_STEP_bro + gamma*(0.2 * all_states_array[("E",curr_state[1],curr_state[2],"R",curr_state[4])] + 0.8*all_states_array[("E",curr_state[1],curr_state[2],"D",curr_state[4])])
 
         if curr_state[1]>0:
             arrow = help_me_STEP_bro + gamma*(0.90 * (0.2 * all_states_array[("E",curr_state[1]-1,curr_state[2],"R",max(0,curr_state[4]-25))] + 0.8*all_states_array[("E",curr_state[1]-1,curr_state[2],"D",max(0,curr_state[4]-25))] ) + 0.10 * (0.2 * all_states_array[("E",curr_state[1]-1,curr_state[2],"R",curr_state[4])] + 0.8 * all_states_array[("E",curr_state[1]-1,curr_state[2],"D",curr_state[4])]))
 
-        blade = help_me_STEP_bro + gamma*(0.80 * (0.2 * all_states_array[("E",curr_state[1],curr_state[2],"R",max(0,curr_state[4]-50))] + 0.8*all_states_array[("E",curr_state[1],curr_state[2],"D",max(0,curr_state[4]-50))] ) + 0.20 * (0.2 * all_states_array[("E",curr_state[1],curr_state[2],"R",curr_state[4])] + 0.8 * all_states_array[("E",curr_state[1],curr_state[2],"D",curr_state[4])]))
-
-        
-
+        blade = help_me_STEP_bro + gamma*(0.80 * (0.2 * all_states_array[("E",curr_state[1],curr_state[2],"R",max(0,curr_state[4]))] + 0.8*all_states_array[("E",curr_state[1],curr_state[2],"D",max(0,curr_state[4]))] ) + 0.20 * (0.2 * all_states_array[("E",curr_state[1],curr_state[2],"R",max(0,curr_state[4]-50))] + 0.8 * all_states_array[("E",curr_state[1],curr_state[2],"D",max(0,curr_state[4]-50))]))
 
     elif curr_state[3]=="R":
-        left = help_me_STEP_bro + gamma*(0.5 * (-40 + all_states_array[("E",0,curr_state[2],"D",min(100,curr_state[4]+25))]) + 0.5*all_states_array[("C",curr_state[1],curr_state[2],"R",curr_state[4])])
-
-        stay = help_me_STEP_bro + gamma*(0.5 * (-40 + all_states_array[("E",0,curr_state[2],"D",min(100,curr_state[4]+25))]) + 0.5*all_states_array[("E",curr_state[1],curr_state[2],"R",curr_state[4])])
+        left = help_me_STEP_bro + gamma*(0.5 * (-40/gamma + all_states_array[("E",0,curr_state[2],"D",min(100,curr_state[4]+25))]) + 0.5*all_states_array[("C",curr_state[1],curr_state[2],"R",curr_state[4])])
+        stay = help_me_STEP_bro + gamma*(0.5 * (-40/gamma + all_states_array[("E",0,curr_state[2],"D",min(100,curr_state[4]+25))]) + 0.5*all_states_array[("E",curr_state[1],curr_state[2],"R",curr_state[4])])
 
         if curr_state[1]>0:
-            arrow = help_me_STEP_bro + gamma*(0.90 * (0.5 * (-40 + all_states_array[("E",curr_state[1]-1,0,"D",min(100,curr_state[4]+25))]) + 0.5*all_states_array[("E",curr_state[1]-1,curr_state[2],"R",max(0,curr_state[4]-25))] ) + 0.10 * (0.5 * all_states_array[("E",curr_state[1]-1,curr_state[2],"R",curr_state[4])] + 0.5 * (-40 + all_states_array[("E", 0,curr_state[2],"D",min(100,curr_state[4]+25))])))
+            arrow = help_me_STEP_bro + gamma*(0.90 * (0.5 * (-40/gamma + all_states_array[("E",0,curr_state[2],"D",min(100,curr_state[4]+25))]) + 0.5*all_states_array[("E",curr_state[1]-1,curr_state[2],"R",max(0,curr_state[4]-25))] ) + 0.10 * (0.5 * all_states_array[("E",curr_state[1]-1,curr_state[2],"R",curr_state[4])] + 0.5 * (-40/gamma + all_states_array[("E", 0,curr_state[2],"D",min(100,curr_state[4]+25))])))
 
-        blade = help_me_STEP_bro + gamma*(0.80 * (0.5 * (-40 + all_states_array[("E",curr_state[1],0,"D",min(100,curr_state[4]+25))]) + 0.5*all_states_array[("E",curr_state[1],curr_state[2],"R",max(0,curr_state[4]-50))] ) + 0.20 * (0.2 * all_states_array[("E",curr_state[1],curr_state[2],"R",curr_state[4])] + 0.5 * (-40 + all_states_array[("E",0,curr_state[2],"D",min(100,curr_state[4]+25))])))
+        blade = help_me_STEP_bro + gamma*(0.80 * (0.5 * (-40/gamma + all_states_array[("E",0,curr_state[2],"D",min(100,curr_state[4]+25))]) + 0.5*all_states_array[("E",curr_state[1],curr_state[2],"R",max(0,curr_state[4]))] ) + 0.20 * (0.5 * all_states_array[("E",curr_state[1],curr_state[2],"R",max(0, curr_state[4]-50))] + 0.5 * (-40/gamma + all_states_array[("E",0,curr_state[2],"D",min(100,curr_state[4]+25))])))
 
-    # print(left,craft,stay,curr_state,blade)
     ans=max(left,arrow,stay,blade)
     best_action=""
     if ans==left:
         best_action="LEFT"
     elif ans==arrow:
-        best_action="ARROW"
+        best_action="SHOOT"
     elif ans==stay:
         best_action="STAY"
     elif ans==blade:
-        best_action="BLADE"
+        best_action="HIT"
     return (ans, best_action)
 
 def west(curr_state, all_states_array):
@@ -135,7 +127,7 @@ def west(curr_state, all_states_array):
     if ans==right:
         best_action="RIGHT"
     elif ans==arrow:
-        best_action="ARROW"
+        best_action="SHOOT"
     elif ans==stay:
         best_action="STAY"
     return (ans, best_action)
@@ -203,17 +195,17 @@ def center(curr_state, all_states_array):
 
 
     elif curr_state[3]=="R":
-        left = help_me_STEP_bro + gamma*(0.85 * (0.5 * all_states_array[("W",curr_state[1],curr_state[2],"R",curr_state[4])] + 0.5*(-40+all_states_array[("C",0,curr_state[2],"D",min(100,curr_state[4]+25))]))+ 0.15 * (0.5 * all_states_array[("E",curr_state[1],curr_state[2],"R",curr_state[4])] + 0.5*(-40+all_states_array[("C",0,curr_state[2],"D",min(100,curr_state[4]+25))])))
-        down = help_me_STEP_bro + gamma*(0.85 * (0.5 * all_states_array[("S",curr_state[1],curr_state[2],"R",curr_state[4])] + 0.5*(-40+all_states_array[("C",0,curr_state[2],"D",min(100,curr_state[4]+25))]))+ 0.15 * (0.5 * all_states_array[("E",curr_state[1],curr_state[2],"R",curr_state[4])] + 0.5*(-40+all_states_array[("C",0,curr_state[2],"D",min(100,curr_state[4]+25))])))
-        right = help_me_STEP_bro + gamma*(0.85 * (0.5 * all_states_array[("E",curr_state[1],curr_state[2],"R",curr_state[4])] + 0.5*(-40+all_states_array[("C",0,curr_state[2],"D",min(100,curr_state[4]+25))]))+ 0.15 * (0.5 * all_states_array[("E",curr_state[1],curr_state[2],"R",curr_state[4])] + 0.5*(-40+all_states_array[("C",0,curr_state[2],"D",min(100,curr_state[4]+25))])))
-        north = help_me_STEP_bro + gamma*(0.85 * (0.5 * all_states_array[("N",curr_state[1],curr_state[2],"R",curr_state[4])] + 0.5*(-40+all_states_array[("C",0,curr_state[2],"D",min(100,curr_state[4]+25))]))+ 0.15 * (0.5 * all_states_array[("E",curr_state[1],curr_state[2],"R",curr_state[4])] + 0.5*(-40+all_states_array[("C",0,curr_state[2],"D",min(100,curr_state[4]+25))])))
+        left = help_me_STEP_bro + gamma*(0.85 * (0.5 * all_states_array[("W",curr_state[1],curr_state[2],"R",curr_state[4])] + 0.5*(-40/gamma+all_states_array[("C",0,curr_state[2],"D",min(100,curr_state[4]+25))]))+ 0.15 * (0.5 * all_states_array[("E",curr_state[1],curr_state[2],"R",curr_state[4])] + 0.5*(-40/gamma+all_states_array[("C",0,curr_state[2],"D",min(100,curr_state[4]+25))])))
+        down = help_me_STEP_bro + gamma*(0.85 * (0.5 * all_states_array[("S",curr_state[1],curr_state[2],"R",curr_state[4])] + 0.5*(-40/gamma+all_states_array[("C",0,curr_state[2],"D",min(100,curr_state[4]+25))]))+ 0.15 * (0.5 * all_states_array[("E",curr_state[1],curr_state[2],"R",curr_state[4])] + 0.5*(-40/gamma+all_states_array[("C",0,curr_state[2],"D",min(100,curr_state[4]+25))])))
+        right = help_me_STEP_bro + gamma*(0.85 * (0.5 * all_states_array[("E",curr_state[1],curr_state[2],"R",curr_state[4])] + 0.5*(-40/gamma+all_states_array[("C",0,curr_state[2],"D",min(100,curr_state[4]+25))]))+ 0.15 * (0.5 * all_states_array[("E",curr_state[1],curr_state[2],"R",curr_state[4])] + 0.5*(-40/gamma+all_states_array[("C",0,curr_state[2],"D",min(100,curr_state[4]+25))])))
+        north = help_me_STEP_bro + gamma*(0.85 * (0.5 * all_states_array[("N",curr_state[1],curr_state[2],"R",curr_state[4])] + 0.5*(-40/gamma+all_states_array[("C",0,curr_state[2],"D",min(100,curr_state[4]+25))]))+ 0.15 * (0.5 * all_states_array[("E",curr_state[1],curr_state[2],"R",curr_state[4])] + 0.5*(-40/gamma+all_states_array[("C",0,curr_state[2],"D",min(100,curr_state[4]+25))])))
 
         stay = help_me_STEP_bro + gamma*(0.85 * (0.5*all_states_array[("C",curr_state[1],curr_state[2],"R",curr_state[4])] + 0.5*all_states_array[("C",0,curr_state[2],"D",min(100, curr_state[4]+25))]) + 0.15 * (0.5*all_states_array[("E",curr_state[1],curr_state[2],"R",curr_state[4])] + 0.5*all_states_array[("E",0,curr_state[2],"D",min(100,curr_state[4]+25))]))
 
         if curr_state[1]>0:
             arrow = help_me_STEP_bro + gamma*(0.50 * (0.5 * all_states_array[("C",curr_state[1]-1,curr_state[2],"R",max(0,curr_state[4]-25))] + 0.5*all_states_array[("C",0,curr_state[2],"D",min(100, curr_state[4]+25))] ) + 0.50 * (0.5 * all_states_array[("C",curr_state[1]-1,curr_state[2],"R",curr_state[4])] + 0.5 * all_states_array[("C",0,curr_state[2],"D",min(0,curr_state[4]+25))]))
 
-        blade = help_me_STEP_bro + gamma*(0.10 * (0.5 * all_states_array[("C",curr_state[1],curr_state[2],"R",max(0,curr_state[4]-50))] + 0.5*all_states_array[("C",0,curr_state[2],"D",min(100,curr_state[4]+25))] ) + 0.90 * (0.5 * all_states_array[("C",curr_state[1],curr_state[2],"R",curr_state[4])] + 0.5 * all_states_array[("C",curr_state[1],0,"D",min(100, curr_state[4]+25))]))        
+        blade = help_me_STEP_bro + gamma*(0.10 * (0.5 * all_states_array[("C",curr_state[1],curr_state[2],"R",max(0,curr_state[4]-50))] + 0.5*all_states_array[("C",0,curr_state[2],"D",min(100,curr_state[4]+25))] ) + 0.90 * (0.5 * all_states_array[("C",curr_state[1],curr_state[2],"R",curr_state[4])] + 0.5 * all_states_array[("C",0, curr_state[2],"D",min(100, curr_state[4]+25))]))        
 
     ans=max(left,down, right, north, stay, arrow, blade)
     best_action=""
@@ -224,13 +216,13 @@ def center(curr_state, all_states_array):
     elif ans==right:
         best_action="RIGHT"
     elif ans==north:
-        best_action="NORTH"
+        best_action="UP"
     elif ans==stay:
         best_action="STAY"
     elif ans==arrow:
-        best_action="ARROW"
+        best_action="SHOOT"
     elif ans==blade:
-        best_action="BLADE"
+        best_action="HIT"
     return (ans, best_action)
 
 delta=100

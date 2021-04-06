@@ -1,5 +1,5 @@
 dic={}
-with open("./apna_aakhri.txt", "r") as f1:
+with open("./apna_doosra.txt", "r") as f1:
     lines=f1.readlines()
     # print(lines)
     for line in lines:
