@@ -103,7 +103,6 @@ def west(curr_state, all_states_array):
     right = -99999
     stay = -99999
     arrow = -99999
-
     if curr_state[3]=="D":
         right = help_me_STEP_bro + gamma*(0.2 * all_states_array[("C",curr_state[1],curr_state[2],"R",curr_state[4])] + 0.8*all_states_array[("C",curr_state[1],curr_state[2],"D",curr_state[4])])
     
