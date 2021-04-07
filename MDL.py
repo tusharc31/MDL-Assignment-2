@@ -1,7 +1,7 @@
 from pprint import pprint
 # initial_state=["W", 0, 0, "D", 100]
 # [W/S, arrow_count, material_count, Dormant/Rest, health]
-help_me_STEP_bro = -20
+help_me_STEP_bro = -5
 gamma = 0.999
 min_delta=1e-3
 
@@ -14,17 +14,12 @@ for x in range(4): #arrow count
         for z in range(0, 125, 25): #health
             for a in position_in_square:
                 for b in mm_states:
-                    if z<=0:
-                        all_states_array[(a, x, y, b, z)]=50
-                        future_states_array[(a, x, y, b, z)]=50
-                    else:
-                        all_states_array[(a, x, y, b, z)]=0
-                        future_states_array[(a, x, y, b, z)]=0
-                        
+                    all_states_array[(a, x, y, b, z)]=0
+                    future_states_array[(a, x, y, b, z)]=0
+
 results_arr={}
 policy_arr={}
 results_arr[0]=(all_states_array)
-
 
 def north(curr_state ,all_states_array):
 
@@ -196,12 +191,12 @@ def center(curr_state, all_states_array):
     best_action=""
     if ans==left:
         best_action="LEFT"
-    elif ans==down:
-        best_action="DOWN"
     elif ans==right:
         best_action="RIGHT"
     elif ans==up:
         best_action="UP"
+    elif ans==down:
+        best_action="DOWN"
     elif ans==stay:
         best_action="STAY"
     elif ans==arrow:
@@ -215,21 +210,17 @@ number_of_iter=0
 x=1
 policy_arr[0]={}
 while(delta>=min_delta):
+    # print(x)
     number_of_iter+=1
     results_arr[x]={}
     policy_arr[x]={}
     delta=-1
-    
-    for a in range(4):
-        for b in range(3):
-            for c in position_in_square:
-                for d in mm_states:
-                    results_arr[x-1][(c, a, b, d, 0)]=50                # check
-                    policy_arr[x-1][(c, a, b, d, 0)]="NONE"
-    
+     
     for s in results_arr[x-1]:
     
         if s[4]<=0:
+            policy_arr[x][s]="NONE"
+            results_arr[x][s]=50
             continue
     
         if s[0]=="N":
