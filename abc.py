@@ -1,5 +1,5 @@
 dic={}
-with open("./sir.txt", "r") as f1:
+with open("./samyak_trace.txt", "r") as f1:
     lines=f1.readlines()
     # print(lines)
     for line in lines:
@@ -9,5 +9,5 @@ with open("./sir.txt", "r") as f1:
         key=key[0]
         # print(key)
         dic[key]=value.split("=")[0]
-    print("sir_dic=",end="")
+    print("samyak_dic=",end="")
     print(str(dic))
